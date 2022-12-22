@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Confirmer la validité de l'erreur </h1>
+<div class="dialog" mat-dialog-content>
+  <mat-form-field style="width: 100%">
+    <mat-label>Nom de produit</mat-label>
+    <input [(ngModel)]="product.name" matInput>
+  </mat-form-field>
+  <mat-form-field style="width: 100%">
+    <mat-label>matricule de produit</mat-label>
+    <input [(ngModel)]="product.matricule" matInput>
+  </mat-form-field>
+  <mat-radio-group (change)="onItemChange($event)" [(ngModel)]="product.isDefective" style="width: 100%">
+    <mat-radio-button value=false>Non</mat-radio-button>
+    <mat-radio-button value=true>Oui</mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field *ngIf="showCause" style="width: 100%">
+    <mat-label>spécifier le cause d'erreur</mat-label>
+    <input [(ngModel)]="product.defectiveCause" matInput>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button (click)="onNoClick()" mat-button>Anuler</button>
+  <button (click)="submitProduct()" [mat-dialog-close]="product.name" cdkFocusInitial mat-button>Enregistrer</button>
+</div>

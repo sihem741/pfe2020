@@ -1,0 +1,39 @@
+<mat-toolbar class="example-toolbar" color="primary">
+  <button (click)="isExpanded = !isExpanded" mat-icon-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <h1 class="example-app-name">Nested Menus</h1>
+</mat-toolbar>
+<mat-sidenav-container autosize class="example-container">
+  <mat-sidenav #sidenav (mouseenter)="mouseenter()" (mouseleave)="mouseleave()" class="example-sidenav" mode="side"
+               opened="true">
+    <mat-nav-list>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" [routerLink]="'/addProduct'" class="parent">
+        <span *ngIf="isExpanded || isShowing" class="full-width">Ajouter un produit</span>
+        <mat-icon mat-list-icon>home</mat-icon>
+      </mat-list-item>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" [routerLink]="'/showHistory'" class="parent">
+        <span *ngIf="isExpanded || isShowing" class="full-width">Consulter l'historique</span>
+        <mat-icon mat-list-icon>home</mat-icon>
+      </mat-list-item>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" [routerLink]="'/errorValidation'" class="parent">
+        <span *ngIf="isExpanded || isShowing" class="full-width">Validation des erreurs</span>
+        <mat-icon mat-list-icon>home</mat-icon>
+      </mat-list-item>
+      <mat-list-item (click)="showSubmenu = !showSubmenu" [routerLink]="'/lastAdded'" class="parent">
+        <span *ngIf="isExpanded || isShowing" class="full-width">Les produits plus récents</span>
+        <mat-icon mat-list-icon>home</mat-icon>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>
+
+
+<!-- Copyright 2017 Google Inc. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->
